@@ -1,0 +1,93 @@
+/* General Page Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+/* Chat Container */
+.chat-container {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Header Text */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info-text {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+/* Chat Box */
+.chat-box {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Field */
+.input-container {
+    display: flex;
+    align-items: center;
+    background: #d3d3d3;
+    border-radius: 25px;
+    padding: 8px;
+    margin-top: 20px;
+}
+
+input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.arrow-icon {
+    font-size: 18px;
+    color: black;
+}
+
+/* Chat Messages */
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background: #4A69BD;
+    color: white;
+    align-self: flex-end;
+}
+
+.ai-message {
+    background: #E5E5EA;
+    color: black;
+    align-self: flex-start;
+}

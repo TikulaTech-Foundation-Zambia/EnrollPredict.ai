@@ -1,0 +1,227 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:wght@400;600&family=Nunito:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8f8f8;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+/* GitHub Icon */
+.github-icon a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.github-icon i {
+    font-size: 24px;
+    color: black;
+}
+
+/* Main Content */
+main {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.buttons button {
+    margin: 10px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.buttons button {
+    margin: 15px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50px; /* Makes button round */
+    font-family: 'Nunito', sans-serif;
+}
+
+.btn-primary {
+    background: #3346FF;
+    color: white;
+}
+
+.btn-secondary {
+    background: #ccc;
+    color: #666;
+}
+
+
+/* Chat Section */
+.chat-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chat-bubble {
+    max-width: 400px;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 5px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.user {
+    background: #4A69BD;
+    color: white;
+    align-self: flex-start;
+}
+
+.bot {
+    background: #E5E5EA;
+    color: black;
+    align-self: flex-end;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding: 15px;
+    background: #f8f8f8;
+    font-size: 14px;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons button {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    .chat-bubble {
+        max-width: 90%;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding-top: 10px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .github-icon i {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .buttons button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
