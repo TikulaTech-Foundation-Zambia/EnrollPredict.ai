@@ -1,106 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:wght@400;600&family=Nunito:wght@400;700&family=Roboto:wght@400;500&display=swap');
 
-/* General Page Styling */
 body {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
     background-color: #f8f8f8;
     margin: 0;
-    height: 100%;
+    padding: 0;
 }
-
-/* Chat Container */
-.chat-container {
-    text-align: center;
-    width: 100%;
+.container {
     max-width: 800px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin: 50px auto;
     padding: 20px;
-}
-
-/* Header Text */
-h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.info-text {
-    font-size: 14px;
-    color: gray;
-    margin-bottom: 20px;
-}
-
-/* Chat Box */
-.chat-box {
     background: white;
-    padding: 15px;
     border-radius: 10px;
-    min-height: 300px;
-    max-height: 500px;
-    overflow-y: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
-
-/* Input Field */
-.input-container {
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+.developer {
     display: flex;
     align-items: center;
-    background: #d3d3d3;
-    border-radius: 25px;
-    padding: 8px;
-    margin-top: 20px;
-}
-
-input {
-    flex: 1;
-    border: none;
-    background: transparent;
+    margin: 20px 0;
     padding: 10px;
-    font-size: 16px;
-    outline: none;
-}
-
-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-.arrow-icon {
-    font-size: 18px;
-    color: black;
-}
-
-/* Chat Messages */
-.message {
-    padding: 10px;
+    background: #f0f0f0;
     border-radius: 8px;
+}
+.developer img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.info {
+    text-align: left;
+    flex: 1;
+}
+.info h2 {
     margin: 5px 0;
-    max-width: 80%;
-    word-wrap: break-word;
 }
-
-.user-message {
-    background: #4A69BD;
-    color: white;
-    align-self: flex-end;
-}
-
-.ai-message {
-    background: #E5E5EA;
-    color: black;
-    align-self: flex-start;
+.linkedin-icon {
+    
+    font-size: 36px;
 }
 
 footer {
@@ -185,3 +127,4 @@ footer {
         font-size: 12px;
     }
 }
+
