@@ -39,15 +39,66 @@
         </div>
         
         <div class="chat-container">
-           
-            <div class="chat-bubble bot">Welcome to <strong>Enroll Predict!</strong> Let's analyze enrollment trends for 2023. Please wait while I process the data.</div>
+            <div class="chat-bubble bot animate__animated animate__fadeInLeft" style="text-align: left";>Welcome to <strong>Enroll Predict!</strong> Let's analyze enrollment trends for 2023. Please wait while I process the data. Lets get started!</div>
+            <div class="chat-bubble user animate__animated animate__fadeInRight" style="text-align: left">What are the predicted enrollment numbers for the next semester at the Copperbelt University?</div>
+            <div class="chat-bubble bot animate__animated animate__fadeInLeft"></div>
+            <div class="thinking">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            </div>
         </div>
+
+        <script>
+            function loopChat() {
+            const chatContainer = document.querySelector('.chat-container');
+            chatContainer.innerHTML = `
+                <div class="chat-bubble bot animate__animated animate__fadeInLeft" style="text-align: left";>Welcome to <strong>Enroll Predict!</strong> Let's analyze enrollment trends for 2023. Please wait while I process the data. Lets get started!</div>
+                <div class="chat-bubble user animate__animated animate__fadeInRight" style="text-align: left";>What are the predicted enrollment numbers for the next semester at the Copperbelt University?</div>
+                <div class="chat-bubble bot animate__animated animate__fadeInLeft">
+                <div class="thinking">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+                </div>
+            `;
+            setTimeout(loopChat, 3000);
+            }
+
+            loopChat();
+        </script>
+
+        <style>
+            .thinking {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            .circle {
+            width: 10px;
+            height: 10px;
+            margin: 0 3px;
+            background-color: #333;
+            border-radius: 50%;
+            animation: breathing 1.5s infinite;
+            }
+            @keyframes breathing {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            }
+        </style>
     </main>
     
+    </div>
     <footer>
         <p>&copy; 2025 TikulaTech Foundation. All Rights Reserved</p>
     </footer>
-
     
 </body>
 </html>
