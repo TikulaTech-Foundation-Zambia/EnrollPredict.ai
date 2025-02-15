@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TikulaTech Foundation</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/about.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">EnrollPredict.ai</div>
+        <nav>
+            <ul>
+               
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('chat_page') }}">Chat</a></li>
+                <li><a href="{{ url_for('developers_page') }}">Developers</a></li>
+                <li><a href="{{ url_for('about_page') }}">About</a></li>
+            </ul>
+        </nav>
+        <div class="github-icon">
+            <a href="https://github.com" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about-us">
+        <h2>About Us</h2>
+        <p>
+            TikulaTech is a community-driven organization
+            dedicated to fostering technological growth and
+            innovation in Zambia. Our mission is to empower
+            individuals, especially youth, by providing
+            access to cutting-edge technologies and
+            fostering a collaborative environment for skill
+            development and innovation.
+        </p>
+        
+        <img src="{{ url_for('static', path='images/zam.jpeg') }}" alt="About Us Image">
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="our-work">
+        <h2>What we do</h2>
+        <p>
+            At TikulaTech Foundation, we focus on a range of projects that enhance access to technology and
+            digital skills. Our initiatives include:
+        </p>
+        <ol>
+            <li>Technliogy training workshops</li>
+            <li>Community Engagement</li>
+            <li>Providing tech resources to scholis and youth groups</li>
+            <li>Digital literacy campaigns</li>
+            <li>Clilaborations with other organizations for tech-for-good projects</li>
+        </ol>
+        
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Our Gallery</h2>
+        <div class="gallery-container">
+            <img src="{{ url_for('static', path='images/clam.jpeg') }}" alt="Event 1">
+            <img src="{{ url_for('static', path='images/dev.jpeg') }}" alt="Event 2">
+            <img src="{{ url_for('static', path='images/zam.jpeg') }}" alt="Event 3">
+            <img src="{{ url_for('static', path='images/pod.jpeg') }}" alt="Event 4">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p>If you're interested in partnering with us or learning more about our work, don't hesitate to reach out!</p>
+        <p>Email us at: <a href="mailto:tikulatech.foundation@gmail.comg">tikulatech.foundation@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 TikulaTech Foundation. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

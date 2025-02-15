@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>EnrollPredict.ai</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">EnrollPredict.ai</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('root') }}">Home</a></li>
+                <li><a href="{{ url_for('chat_page') }}">Chat</a></li>
+                <li><a href="{{ url_for('developers_page') }}">Developers</a></li>
+                <li><a href="{{ url_for('about_page') }}">About</a></li>
+            </ul>
+        </nav>
+        <div class="github-icon">
+            <a href="https://github.com" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        
+    </header>
+    
+    <main>
+        <h1>AI-Powered Enrollment Predictions</h1>
+        <p>
+            Make informed decisions with accurate AI predictions for educational institutions.
+            Transform your enrollment data into actionable insights.
+        </p>
+        <div class="buttons">
+            <a href="{{ url_for('chat_page') }}"><button class="btn-primary">Try Predict</button></a>
+            <button class="btn-secondary" disabled>Read Doc</button>
+        </div>
+        
+        <div class="chat-container">
+            <div class="chat-bubble bot">
+                Hi! I can help analyze enrollment trends. What would you like to know?
+            </div>
+            <div class="chat-bubble user">
+                Predict CBU enrollment for next semester?
+            </div>
+            <div class="chat-bubble bot">
+                Predicted enrollment: ~5,200 students (±200)
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 TikulaTech Foundation. All Rights Reserved</p>
+    </footer>
+    
+</body>
+</html>

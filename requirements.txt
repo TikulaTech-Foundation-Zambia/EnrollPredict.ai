@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+jinja2
+python-dotenv
+langchain
+langchain-groq
+langchain-community
+langgraph
+tavily-python
+joblib
+scikit-learn

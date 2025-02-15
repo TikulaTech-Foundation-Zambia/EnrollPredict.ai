@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chat Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">EnrollPredict.ai</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('root') }}">Landing</a></li>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('chat_page') }}">Chat</a></li>
+                <li><a href="{{ url_for('developers_page') }}">Developers</a></li>
+                <li><a href="{{ url_for('about_page') }}">About</a></li>
+            </ul>
+        </nav>
+        <div class="github-icon">
+            <a href="https://github.com" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="hero">
+            <h1>Welcome to AI Chat Assistant</h1>
+            <p>Experience intelligent conversations powered by advanced AI</p>
+            <a href="/chat" class="cta-button">Start Chatting</a>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Smart Conversations</h3>
+                <p>Engage in natural conversations with our AI assistant</p>
+            </div>
+            <div class="feature-card">
+                <h3>Real-time Responses</h3>
+                <p>Get instant answers to your questions</p>
+            </div>
+            <div class="feature-card">
+                <h3>24/7 Available</h3>
+                <p>Access the chat assistant anytime you need</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/chat.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">EnrollPredict.ai</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('root') }}">Home</a></li>
+                <li><a href="{{ url_for('chat_page') }}">Chat</a></li>
+                <li><a href="{{ url_for('developers_page') }}">Developers</a></li>
+                <li><a href="{{ url_for('about_page') }}">About</a></li>
+            </ul>
+        </nav>
+        <div class="github-icon">
+            <a href="https://github.com" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        
+    </header>
+
+    <div class="chat-container">
+        <div class="disclaimer">
+            <i class="fas fa-info-circle"></i>
+            While these predictions are based on historical trends and AI models, they may not be 100% accurate. The system is constantly being improved to enhance accuracy.
+        </div>
+        <div class="chat-box" id="chat-messages">
+            <!-- Messages will be added here -->
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message here...">
+            <button onclick="sendMessage()" id="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', path='js/chat.js') }}"></script>
+    <script>
+        addMessage("Hello! How can I help you today?", "ai-message");
+        function showThinking() {
+            const messagesDiv = document.getElementById('chat-messages');
+           
+            const thinkingDiv = document.createElement('div');
+            thinkingDiv.className = 'message ai-message thinking-bubble';
+            thinkingDiv.id = 'thinking-bubble';
+            
+            const thinkingText = document.createElement('span');
+            thinkingText.className = 'thinking-text';
+            thinkingText.textContent = 'Thinking';
+            
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'thinking-indicator';
+            for (let i = 0; i < 3; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dotsContainer.appendChild(dot);
+            }
+            
+            thinkingDiv.appendChild(thinkingText);
+            thinkingDiv.appendChild(dotsContainer);
+            messagesDiv.appendChild(thinkingDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function hideThinking() {
+            const thinkingBubble = document.getElementById('thinking-bubble');
+            if (thinkingBubble) {
+                thinkingBubble.remove();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user-message');
+            input.value = '';
+
+            // Show thinking animation
+            showThinking();
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({message: message})
+                });
+                const data = await response.json();
+                
+                // Hide thinking animation and add AI response
+                hideThinking();
+                addMessage(data.response, 'C');
+            } catch (error) {
+                hideThinking();
+                addMessage('Sorry, something went wrong.', 'ai-message error');
+            }
+        }
+
+        function addMessage(text, className) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${className}`;
+            messageDiv.textContent = text;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:wght@400;600&family=Nunito:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Background Decorative Elements */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(51, 70, 255, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(94, 118, 255, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(51, 70, 255, 0.05) 0%, transparent 55%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   padding: 10px 15px;
+    background: #ffffff;
+    backdrop-filter: none;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3346FF;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* GitHub Icon */
+.github-icon a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.github-icon i {
+    font-size: 24px;
+    color: black;
+}
+
+/* Main Content Refinements */
+main {
+    padding: 30px 20px;
+    max-width: 1000px;
+    margin: auto;
+   
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+}
+
+main h1 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #3346FF, #5E76FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-weight: 700;
+}
+
+main p {
+    font-size: 1.1em;
+    line-height: 1.4;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.buttons button {
+    margin: 10px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.buttons button {
+    margin: 15px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50px; /* Makes button round */
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Button Refinements */
+.btn-primary {
+    background: linear-gradient(135deg, #3346FF, #5E76FF);
+    border-radius: 25px;
+    padding: 12px 28px;
+    box-shadow: 0 4px 15px rgba(51, 70, 255, 0.2);
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2835cc, #4E66FF);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(51, 70, 255, 0.3);
+}
+
+.btn-secondary {
+    border-radius: 25px;
+    backdrop-filter: blur(5px);
+    background: rgba(240, 242, 245, 0.8);
+    color: #666;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    border: none;
+    cursor: not-allowed;
+}
+
+/* Enhanced Chat Container */
+.chat-container {
+    background: transparent;
+    padding: 20px;
+    margin: 25px auto;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+    gap: 12px;
+}
+
+.chat-container:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.chat-bubble {
+    padding: 15px 20px;
+    margin: 6px 0;
+    max-width: 65%;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.4;
+    border-radius: 30px;
+    animation: fadeIn 0.4s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+.bot {
+    background: rgba(240, 242, 245, 0.8);
+    color: #1a1a1a;
+    align-self: flex-start;
+    margin-right: auto;
+    border-radius: 30px 30px 30px 8px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.user {
+    background: linear-gradient(135deg, #3346FF, #5E76FF);
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    border-radius: 30px 30px 8px 30px;
+    box-shadow: 0 4px 15px rgba(51, 70, 255, 0.2);
+}
+
+/* Decorative shapes */
+.chat-container::before,
+.chat-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(51, 70, 255, 0.15), rgba(94, 118, 255, 0.08));
+    animation: pulse 4s ease-in-out infinite;
+    filter: blur(5px);
+}
+
+.chat-container::before {
+    width: 120px;
+    height: 120px;
+    top: -60px;
+    left: -60px;
+    animation-delay: 0s;
+}
+
+.chat-container::after {
+    width: 80px;
+    height: 80px;
+    bottom: -40px;
+    right: -40px;
+    animation-delay: 2s;
+}
+
+/* Add floating circles */
+.chat-container > div:first-child::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, rgba(51, 70, 255, 0.05), rgba(94, 118, 255, 0.05));
+    border-radius: 50%;
+    left: -60px;
+    top: 20px;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f8f8f8;
+    font-size: 14px;
+}
+/* Typing Animation */
+.thinking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle {
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: breathing 1.5s infinite;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons button {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    .chat-bubble {
+        max-width: 85%;
+        font-size: 14px;
+    }
+
+    .chat-container::before,
+    .chat-container::after,
+    .chat-container > div:first-child::before {
+        display: none;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding-top: 10px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .github-icon i {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .buttons button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+
+    /* Typing Animation */
+    @keyframes breathing {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.3;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}

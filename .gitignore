@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Data and notebooks
+*.csv
+*.xls
+*.xlsx
+*.pkl
+*.h5
+.ipynb_checkpoints/
+
+# Logs and local files
+logs/
+*.log
+.DS_Store
