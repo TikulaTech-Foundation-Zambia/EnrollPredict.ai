@@ -5,6 +5,7 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from langchain_groq import ChatGroq
 from langchain_community.tools.tavily_search import TavilySearchResults
 from .agent import Agent
+from .tools import predict_with_cnn
 from pathlib import Path
 
 
@@ -23,7 +24,7 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 # Initialize your agent
 model = ChatGroq(temperature=0)
-tools = [TavilySearchResults(max_results=1)]
+tools = [predict_with_cnn]
 agent = Agent(model=model, tools=tools)
 
 @app.get("/")

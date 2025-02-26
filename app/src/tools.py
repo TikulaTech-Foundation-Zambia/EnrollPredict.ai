@@ -1,60 +1,45 @@
+import tensorflow as tf
+import pandas as pd
 import joblib
-import os
-import numpy as np
-from typing import Dict, Any, List
-from langchain.tools import BaseTool
+from langchain.tools import tool
 
-class SimpleFallbackModel:
-    """A simple fallback model using basic linear calculation"""
-    def predict(self, features: List[List[float]]) -> np.ndarray:
-        # Simple weighted average: GRE (30%), TOEFL (30%), CGPA (40%)
-        predictions = []
-        for feature in features:
-            gre_norm = min(feature[0] / 340.0, 1.0) * 0.3
-            toefl_norm = min(feature[1] / 120.0, 1.0) * 0.3
-            cgpa_norm = min(feature[2] / 10.0, 1.0) * 0.4
-            pred = gre_norm + toefl_norm + cgpa_norm
-            predictions.append(pred)
-        return np.array(predictions)
+# Load the saved CNN model and scaler
+loaded_model = tf.keras.models.load_model('app/src/model/admission_cnn_model.keras')
+loaded_scaler = joblib.load('app/src/model/admission_scaler.pkl')
 
-class AdmissionPredictionTool(BaseTool):
-    name: str = "admission_predictor"
-    description: str = "Predicts chance of admission based on student data. Required input: GRE_Score, TOEFL_Score, CGPA"
+# Function to predict with the loaded CNN model
+@tool
+def predict_with_cnn(gre_score, toefl_score, sop, lor, cgpa):
+    """
+    Makes chance of admission predictions using a Convolutional Neural Network (CNN) model.
     
-    def __init__(self, model_path=None):
-        super().__init__()
-        self.model = None
+    Parameters:
+        gre_score (float): GRE score of the applicant
+        toefl_score (float): TOEFL score of the applicant
+        sop (float): Statement of Purpose score (1-5)
+        lor (float): Letter of Recommendation score (1-5)
+        cgpa (float): CGPA of the applicant (0-10)
         
-        try:
-            if model_path is None:
-                model_path = './src/model/admission_prediction_model_regressor.pkl'
-            
-            if os.path.exists(model_path):
-                self.model = joblib.load(model_path)
-            else:
-                print("Model file not found, using fallback model")
-                self.model = SimpleFallbackModel()
-        except Exception as e:
-            print(f"Error loading model: {str(e)}")
-            print("Using fallback model instead")
-            self.model = SimpleFallbackModel()
-
-    def _run(self, input_data: Dict[str, Any]) -> str:
-        try:
-            # Extract required features
-            features = [[
-                float(input_data.get('GRE_Score', 0)),
-                float(input_data.get('TOEFL_Score', 0)),
-                float(input_data.get('CGPA', 0))
-            ]]
-            
-            prediction = self.model.predict(features)
-            chance = prediction[0] * 100  # Convert to percentage
-            
-            return f"Predicted chance of admission: {chance:.2f}%"
-            
-        except Exception as e:
-            return f"Error making prediction: {str(e)}"
-
-    def _arun(self, query: str):
-        raise NotImplementedError("Async not implemented")
+    Returns:
+        float: Predicted chance of admission (0-100%)
+    """
+    # Create input data
+    input_data = pd.DataFrame({
+        'GRE Score': [gre_score],
+        'TOEFL Score': [toefl_score],
+        'SOP': [sop],
+        'LOR ': [lor],
+        'CGPA': [cgpa]
+    })
+    
+    # Scale the input
+    scaled_input = loaded_scaler.transform(input_data)
+    
+    # Reshape for CNN (samples, features, 1)
+    reshaped_input = scaled_input.reshape(scaled_input.shape[0], scaled_input.shape[1], 1)
+    
+    # Make prediction
+    prediction = loaded_model.predict(reshaped_input, verbose=0)
+    
+    # Convert to percentage
+    return float(prediction[0][0] * 100)

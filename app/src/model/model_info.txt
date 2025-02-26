@@ -1,0 +1,7 @@
+
+# Admission Prediction CNN Model
+- Model Type: Convolutional Neural Network (1D)
+- Input Features: GRE Score, TOEFL Score, SOP, LOR, CGPA
+- Output: Chance of Admission (0-1)
+- Test Mean Absolute Error: 0.0540
+- Saved on: 2025-02-26 21:58:47
