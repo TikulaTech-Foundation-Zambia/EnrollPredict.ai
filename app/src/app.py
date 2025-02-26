@@ -3,9 +3,9 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse, RedirectResponse
 from langchain_groq import ChatGroq
-from langchain_community.tools.tavily_search import TavilySearchResults
+from langchain_core.messages import HumanMessage
 from .agent import Agent
-from .tools import predict_with_cnn
+from .tools import  predict_with_cnn
 from pathlib import Path
 
 
@@ -14,8 +14,6 @@ app = FastAPI()
 # Get base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-
 # Make sure this line is before any route definitions
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 
@@ -23,9 +21,10 @@ app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="stat
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 # Initialize your agent
-model = ChatGroq(temperature=0)
-tools = [predict_with_cnn]
-agent = Agent(model=model, tools=tools)
+model = ChatGroq(temperature=0, model="llama-3.3-70b-versatile")
+tools = [predict_with_cnn]  # Using the more reliable tool for now
+agent = Agent(model=model, tools=tools, 
+              system="You are an AI admission counselor. Help students understand their chances of admission based on their academic scores.")
 
 @app.get("/")
 async def root(request: Request):
@@ -52,10 +51,23 @@ async def chat(request: Request):
     data = await request.json()
     message = data.get("message")
     
-    # Process the message through your agent
-    result = agent.graph.invoke({"messages": [{"role": "user", "content": message}]})
+    # Create a human message from the input
+    human_message = HumanMessage(content=message)
     
-    return JSONResponse(content={"response": result["messages"][-1].content})
+    try:
+        # Process the message through your agent
+        result = agent.graph.invoke({
+            "messages": [human_message]
+        })
+        
+        # Extract the last message content
+        final_message = result["messages"][-1].content if result["messages"] else "I couldn't process your request."
+        
+    except Exception as e:
+        print(f"Error in processing: {e}")
+        final_message = "Sorry, I encountered an error while processing your request. Please try again with different inputs."
+    
+    return JSONResponse(content={"response": final_message})
 
 @app.get("/developers")
 async def developers_page(request: Request):
