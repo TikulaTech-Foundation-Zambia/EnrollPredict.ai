@@ -8,9 +8,12 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from dotenv import load_dotenv
 from langgraph.prebuilt import ToolNode
 from langgraph.types import Command
+
+
 import pandas as pd
 
 load_dotenv()
+
 
 
 class State(TypedDict):
@@ -18,9 +21,10 @@ class State(TypedDict):
 
 
 class Agent:
-    def __init__(self, model:ChatGroq, tools, system=""):
+    def __init__(self, model:ChatGroq, tools, memory,system=""):
         self.system = system
         self.model = model.bind_tools(tools)
+        self.checkpointer = memory
         self.tools_node = ToolNode(tools)
 
         workflow = StateGraph(State)
@@ -30,15 +34,15 @@ class Agent:
         workflow.add_edge(START, "llm")
         workflow.add_edge("tools", "llm")
 
-        self.graph = workflow.compile()
+        self.graph = workflow.compile(checkpointer=self.checkpointer)
 
 
 
     def call_llm(self, state:State)->Command[Literal["tools", "__end__"]]:
         messages=[SystemMessage(content=self.system)]+state["messages"]
-        response = self.model.invoke(messages)
-        print(response)
-
+        config = {"configurable": {"thread_id": "1"}}
+        response = self.model.invoke(messages, config=config)
+       
         if len(response.tool_calls) > 0:
             next_node = "tools"
         else:

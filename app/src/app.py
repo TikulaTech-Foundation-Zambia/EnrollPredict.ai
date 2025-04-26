@@ -5,8 +5,10 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage
 from .agent import Agent
-from .tools import  predict_with_cnn
+from .tools import  predict_enrollment
 from pathlib import Path
+from langgraph.checkpoint.memory import InMemorySaver
+memory = InMemorySaver()
 
 
 app = FastAPI()
@@ -22,9 +24,10 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 # Initialize your agent
 model = ChatGroq(temperature=0, model="llama-3.3-70b-versatile")
-tools = [predict_with_cnn]  # Using the more reliable tool for now
+tools = [predict_enrollment]  # Using the more reliable tool for now
 agent = Agent(model=model, tools=tools, 
-              system="You are an AI admission counselor. Help students understand their chances of admission based on their academic scores.")
+              memory=memory,
+              system="You are a helpful assistant, assist the user with their questions. Use have access to tools to solve the users queries. ")
 
 @app.get("/")
 async def root(request: Request):
@@ -58,7 +61,8 @@ async def chat(request: Request):
         # Process the message through your agent
         result = agent.graph.invoke({
             "messages": [human_message]
-        })
+        }, config={"configurable": {"thread_id": "1"}})
+        
         
         # Extract the last message content
         final_message = result["messages"][-1].content if result["messages"] else "I couldn't process your request."

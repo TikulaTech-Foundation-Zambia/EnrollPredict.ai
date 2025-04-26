@@ -1,7 +1,15 @@
+Enrollment Prediction LSTM Model
+Created: 2025-04-23 11:00:30
 
-# Admission Prediction CNN Model
-- Model Type: Convolutional Neural Network (1D)
-- Input Features: GRE Score, TOEFL Score, SOP, LOR, CGPA
-- Output: Chance of Admission (0-1)
-- Test Mean Absolute Error: 0.0540
-- Saved on: 2025-02-26 21:58:47
+Performance Metrics:
+  - RMSE: 5477.46
+  - MAE: 3986.85
+  - MAPE: 1.76%
+  - R²: 0.9888
+
+Top 5 Important Features:
+  - Program_Mining Engineering: 0.0635
+  - Previous_Year_Enrollment: 0.0437
+  - Mining_Industry_Growth: 0.0262
+  - Applications_Received: 0.0256
+  - Scholarship_Funds_Available: 0.0214
