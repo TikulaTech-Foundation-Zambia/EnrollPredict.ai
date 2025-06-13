@@ -11,6 +11,59 @@ venv/
 build/
 develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Models (uncomment if you want to track models)
+# models/trained/*.keras
+# models/trained/*.pkl
+# models/trained/*.joblib
+
+# Temporary files
+*.tmp
+*.temp
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+
+# Data (uncomment if you want to ignore large datasets)
+# data/raw/*
+# data/processed/*
+
+# Outputs
+outputs/temp/
+outputs/debug/
+develop-eggs/
+dist/
 eggs/
 *.egg-info/
 

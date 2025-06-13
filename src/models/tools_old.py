@@ -4,15 +4,25 @@ import numpy as np
 import joblib
 from langchain.tools import tool
 from pathlib import Path
+from ..utils.model_manager import ModelManager
+from ..data.processor import DataProcessor
 
-# Define the model paths with proper path resolution
-BASE_DIR = Path(__file__).resolve().parent
-MODEL_DIR = BASE_DIR / "model"
+# Define model paths
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+MODEL_DIR = BASE_DIR / "models" / "trained"
+SCALERS_DIR = BASE_DIR / "models" / "scalers"
+
+# CNN Model paths
 CNN_MODEL_PATH = MODEL_DIR / "admission_cnn_model.keras"
+SCALER_PATH = SCALERS_DIR / "scaler_x.joblib"
+
+# LSTM Model paths
 LSTM_MODEL_PATH = MODEL_DIR / "admission_lstm_model.keras"
-SCALER_PATH = MODEL_DIR / "admission_scaler.pkl"
-TARGET_SCALER_PATH = MODEL_DIR / "target_scaler.pkl"
-REGRESSOR_PATH = MODEL_DIR / "admission_prediction_model_regressor.pkl"
+TARGET_SCALER_PATH = SCALERS_DIR / "scaler_y.joblib"
+
+# Initialize utilities
+model_manager = ModelManager()
+data_processor = DataProcessor()
 
 @tool
 def predict_with_cnn(gre_score: float, toefl_score: float, sop: float, lor: float, cgpa: float) -> str:

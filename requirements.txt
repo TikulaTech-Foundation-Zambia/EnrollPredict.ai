@@ -1,0 +1,44 @@
+# Web Framework
+fastapi
+uvicorn
+jinja2
+python-multipart
+
+# Environment and Configuration
+python-dotenv
+pydantic
+pydantic-settings
+
+# AI and ML Core
+langchain
+langgraph
+langchain-groq
+langchain-community
+
+# Data Science and ML
+numpy
+pandas
+scikit-learn
+joblib
+tensorflow
+scipy
+h5py
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Utilities
+requests
+tqdm
+pillow
+
+# Search (if using Tavily)
+tavily-python
+
+# Development
+pytest
+pytest-asyncio
+black
+flake8

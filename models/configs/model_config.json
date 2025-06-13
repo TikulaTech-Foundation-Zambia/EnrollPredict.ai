@@ -1,0 +1,31 @@
+{
+  "model_config": {
+    "cnn_model": {
+      "path": "models/trained/admission_cnn_model.keras",
+      "input_features": ["gre_score", "toefl_score", "sop", "lor", "cgpa"],
+      "output_type": "probability",
+      "description": "Convolutional Neural Network for admission prediction"
+    },
+    "lstm_model": {
+      "path": "models/trained/admission_lstm_model.keras",
+      "input_features": ["gre_score", "toefl_score", "sop", "lor", "cgpa"],
+      "output_type": "probability",
+      "description": "LSTM model for sequential admission prediction"
+    },
+    "enrollment_model": {
+      "path": "models/trained/enrollment_predictor_final.keras",
+      "input_features": ["gre_score", "toefl_score", "sop", "lor", "cgpa"],
+      "output_type": "probability",
+      "description": "Final enrollment prediction model"
+    }
+  },
+  "scalers": {
+    "input_scaler": "models/scalers/scaler_x_final.joblib",
+    "output_scaler": "models/scalers/scaler_y_final.joblib"
+  },
+  "data_config": {
+    "training_data": "data/datasets/dataset.json",
+    "feature_columns": ["gre_score", "toefl_score", "sop", "lor", "cgpa"],
+    "target_column": "chance_of_admit"
+  }
+}

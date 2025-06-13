@@ -36,7 +36,9 @@ class Agent:
 
         self.graph = workflow.compile(checkpointer=self.checkpointer)
 
-
+    def invoke(self, state, config=None):
+        """Invoke the agent with the given state and configuration."""
+        return self.graph.invoke(state, config=config)
 
     def call_llm(self, state:State)->Command[Literal["tools", "__end__"]]:
         messages=[SystemMessage(content=self.system)]+state["messages"]
@@ -51,10 +53,10 @@ class Agent:
         return Command(goto=next_node, update={"messages":response})
 
 
-        
-            
-            
-    
 
-    
+
+
+
+
+
 

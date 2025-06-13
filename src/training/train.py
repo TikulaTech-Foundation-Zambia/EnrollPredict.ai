@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 import json
+from pathlib import Path
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -13,13 +14,17 @@ import matplotlib.pyplot as plt
 # --- 1. Load Data from JSON ---
 def load_enrollment_data():
     try:
-        with open('dataset.json', 'r') as file:
+        # Update path to use the new data structure
+        BASE_DIR = Path(__file__).resolve().parent.parent.parent
+        DATA_PATH = BASE_DIR / "data" / "datasets" / "dataset.json"
+        
+        with open(DATA_PATH, 'r') as file:
             data = json.load(file)
             df = pd.DataFrame(data['enrollment_data'])
             print("Successfully loaded data from dataset.json")
             return df
     except FileNotFoundError:
-        print("Error: dataset.json not found")
+        print("Error: dataset.json not found in data/datasets/")
         return None
     except json.JSONDecodeError:
         print("Error: Invalid JSON format in dataset.json")
