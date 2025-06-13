@@ -107,12 +107,6 @@ python train.py
 - `GET /api/chat/history/{session_id}` - Get chat history
 - `DELETE /api/chat/history/{session_id}` - Clear chat history
 
-## 🧪 Testing
-
-```bash
-pytest tests/
-```
-
 ## 🔍 Model Information
 
 The application includes multiple models:
