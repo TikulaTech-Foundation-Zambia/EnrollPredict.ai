@@ -127,14 +127,6 @@ Create a `.env` file with:
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
 ## 📄 License
 
 This project is licensed under the MIT License.
